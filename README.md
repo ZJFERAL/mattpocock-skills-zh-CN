@@ -1,6 +1,6 @@
 # 给真正工程师用的 Skills（简体中文版）
 
-[![skills.sh](https://skills.sh/b/vinvcn/mattpocock-skills-zh-CN)](https://skills.sh/vinvcn/mattpocock-skills-zh-CN)
+[![skills.sh](https://skills.sh/b/ZJFERAL/mattpocock-skills-zh-CN)](https://skills.sh/ZJFERAL/mattpocock-skills-zh-CN)
 
 [Matt Pocock](https://github.com/mattpocock) 的 [`mattpocock/skills`](https://github.com/mattpocock/skills)：第三方简体中文本地化，非官方仓库。这些 agent skills 是他每天用于真实工程工作的，不是 vibe coding：小、易改、可组合，适用于任何模型。
 
@@ -13,7 +13,7 @@
 </p>
 
 ```bash
-npx skills@latest add vinvcn/mattpocock-skills-zh-CN
+npx skills@latest add ZJFERAL/mattpocock-skills-zh-CN
 ```
 
 选择你想安装的 skills，以及要安装到哪些 coding agents。首次安装时请确保选择 [`/setup-matt-pocock-skills`](./skills/engineering/setup-matt-pocock-skills/SKILL.md)，然后在 agent 中运行它来完成 issue tracker、labels 和 docs 目录配置。
@@ -21,7 +21,7 @@ npx skills@latest add vinvcn/mattpocock-skills-zh-CN
 或者在 Claude Code 中运行：
 
 ```
-/plugin marketplace add vinvcn/mattpocock-skills-zh-CN
+/plugin marketplace add ZJFERAL/mattpocock-skills-zh-CN
 /plugin install mattpocock-skills@mattpocock
 ```
 
@@ -41,7 +41,7 @@ dsh plugin --profile web add @vinvcn/dsh-mattpocock-skills-zh
 
 本仓库按内容刷新方式同步上游，不同步上游 Git 历史或仓库管理状态。同步翻译由 Codex 执行，人工审核每一次更新后由维护者通过 PR 纳入 `main`；维护规则见 [`.skills/translate-skill/SKILL.md`](./.skills/translate-skill/SKILL.md)。
 
-翻译策略是 **skill-guided content localization**：把上游 `mattpocock/skills` 当作英文内容来源，只翻译自然语言说明，保留目录名、skill name、frontmatter key、命令、代码块、路径、URL、package/tool/API identifiers 和行为关键 labels。用户可见的安装路径统一保持为 `vinvcn/mattpocock-skills-zh-CN`。
+翻译策略是 **skill-guided content localization**：把上游 `mattpocock/skills` 当作英文内容来源，只翻译自然语言说明，保留目录名、skill name、frontmatter key、命令、代码块、路径、URL、package/tool/API identifiers 和行为关键 labels。用户可见的安装路径统一保持为 `ZJFERAL/mattpocock-skills-zh-CN`。
 
 想请求翻译仓库里的英文术语，或认领翻译 PR？先读[贡献指南](./CONTRIBUTING.md)；已请求与已决定的译法记录在[翻译术语表](./TRANSLATION-GLOSSARY.md)。
 
@@ -72,7 +72,7 @@ dsh plugin --profile web add @vinvcn/dsh-mattpocock-skills-zh
 1. 运行 skills.sh installer：
 
 ```bash
-npx skills@latest add vinvcn/mattpocock-skills-zh-CN
+npx skills@latest add ZJFERAL/mattpocock-skills-zh-CN
 ```
 
 2. 选择你想安装的 skills，以及要安装到哪些 coding agents。**确保选择 `/setup-matt-pocock-skills`**。
@@ -91,14 +91,14 @@ npx skills@latest add vinvcn/mattpocock-skills-zh-CN
 在 Claude Code 中运行：
 
 ```
-/plugin marketplace add vinvcn/mattpocock-skills-zh-CN
+/plugin marketplace add ZJFERAL/mattpocock-skills-zh-CN
 /plugin install mattpocock-skills@mattpocock
 ```
 
 或在 shell 中运行：
 
 ```bash
-claude plugin marketplace add vinvcn/mattpocock-skills-zh-CN
+claude plugin marketplace add ZJFERAL/mattpocock-skills-zh-CN
 claude plugin install mattpocock-skills@mattpocock
 ```
 
@@ -106,10 +106,10 @@ claude plugin install mattpocock-skills@mattpocock
 
 两种安装方式代表两种使用取向，只选其一；两个都装会让每个 skill 被安装两次：
 
-- **[skills.sh](https://skills.sh/vinvcn/mattpocock-skills-zh-CN)** 会把 skills 复制进项目，方便你修改、定制，把它们变成自己的东西。
+- **[skills.sh](https://skills.sh/ZJFERAL/mattpocock-skills-zh-CN)** 会把 skills 复制进项目，方便你修改、定制，把它们变成自己的东西。
 - **Plugin** 把它们作为受管理的只读 bundle 安装，随新版本发布统一更新：是订阅而不是 fork，适合只想直接使用并持续跟进更新的用户。
 
-> 使用 Codex 或其他 agent？[skills.sh installer](https://skills.sh/vinvcn/mattpocock-skills-zh-CN) 已经可以把这些 skills 安装到 Codex 和其他兼容 Agent Skills 的 harnesses；目前尚未提供原生 Codex plugin。
+> 使用 Codex 或其他 agent？[skills.sh installer](https://skills.sh/ZJFERAL/mattpocock-skills-zh-CN) 已经可以把这些 skills 安装到 Codex 和其他兼容 Agent Skills 的 harnesses；目前尚未提供原生 Codex plugin。
 
 ### 为什么这些 Skills 存在
 

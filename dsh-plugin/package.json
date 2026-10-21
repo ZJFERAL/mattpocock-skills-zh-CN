@@ -13,7 +13,7 @@
   "files": ["index.js", "cordis.patch.yml", "LICENSE", "README.md", "skills"],
   "engines": { "node": "^22.19.0 || >=24" },
   "license": "MIT",
-  "repository": { "type": "git", "url": "git+https://github.com/vinvcn/mattpocock-skills-zh-CN.git", "directory": "dsh-plugin" },
+  "repository": { "type": "git", "url": "git+https://github.com/ZJFERAL/mattpocock-skills-zh-CN.git", "directory": "dsh-plugin" },
   "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
   "dependencies": { "yaml": "^2.4.2" },
   "scripts": {

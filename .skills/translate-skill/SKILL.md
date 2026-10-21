@@ -1,11 +1,11 @@
 ---
 name: translate-skill
-description: 将 mattpocock/skills 的内容翻译、刷新或复核到简体中文本地化仓库 vinvcn/mattpocock-skills-zh-CN 时使用这个项目级 skill。适用于 skill files、README content、CLAUDE.md、GLOSSARY.md、docs，以及其他需要保留行为关键 identifiers 的上游用户可见内容。
+description: 将 mattpocock/skills 的内容翻译、刷新或复核到简体中文本地化仓库 ZJFERAL/mattpocock-skills-zh-CN 时使用这个项目级 skill。适用于 skill files、README content、CLAUDE.md、GLOSSARY.md、docs，以及其他需要保留行为关键 identifiers 的上游用户可见内容。
 ---
 
 # 翻译 skill
 
-使用这个 skill 把上游 `mattpocock/skills` 的内容翻译成简体中文，用于 `vinvcn/mattpocock-skills-zh-CN`。
+使用这个 skill 把上游 `mattpocock/skills` 的内容翻译成简体中文，用于 `ZJFERAL/mattpocock-skills-zh-CN`。
 
 这个 skill 用于**内容本地化**，不是 Git 同步。
 
@@ -75,7 +75,7 @@ mattpocock/skills
 替换为本地化仓库路径：
 
 ```text
-vinvcn/mattpocock-skills-zh-CN
+ZJFERAL/mattpocock-skills-zh-CN
 ```
 
 只有当命令或说明性文字是在告诉用户如何安装或使用本地化仓库时，才做这个替换。
@@ -144,7 +144,7 @@ argument-hint: "你想学习什么？"
 4. 只翻译自然语言文本。
 5. 原样恢复被保护的片段。
 6. 检查命令、代码块、路径、URL、identifiers 和 frontmatter keys 保持不变。
-7. 检查本地化后的安装命令使用 `vinvcn/mattpocock-skills-zh-CN`。
+7. 检查本地化后的安装命令使用 `ZJFERAL/mattpocock-skills-zh-CN`。
 8. 返回翻译后的文件内容或 patch，并附上所有复核标记。
 
 ## 仓库刷新工作流
@@ -223,7 +223,7 @@ SYNC.md 同步记录：
 - ...
 
 不变量检查：
-- 安装命令指向 vinvcn/mattpocock-skills-zh-CN
+- 安装命令指向 ZJFERAL/mattpocock-skills-zh-CN
 - 代码块保持原样
 - frontmatter keys 保持原样
 - 路径和 identifiers 保持原样
