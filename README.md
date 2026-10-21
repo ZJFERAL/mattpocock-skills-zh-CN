@@ -232,6 +232,7 @@ AI 时代也是一样。你和 agent 之间存在沟通缺口。修复方式是�
 - **[implement-spec](./skills/engineering/implement-spec/SKILL.md)** - 在单一 integration branch 上实现整份 spec。把 tickets 当作 task graph 来推进，在 ready frontier 上并行运行 implementer subagents 以最大化并发，最后以 `/code-review` 收尾。
 - **[wayfinder](./skills/engineering/wayfinder/SKILL.md)** - 把超出单个 agent session 的大块工作规划成 issue tracker 上的 decision tickets 共享 map，逐一解决直到通往 destination 的路清晰。
 - **[retro](./skills/engineering/retro/SKILL.md)** - 一次 session 结束后，针对 coding agent 的环境（navigation、automated checks、coding standards、steering files、tooling）提出改进建议，最严重的排最前。
+- **[ship](./skills/engineering/ship/SKILL.md)** - 把 idea 一路推到 ship 的严格流程：对齐、计划、执行、审查、验证、收尾、复盘，每阶段带硬 gate。需要按部就班时手动调用。
 
 **Model-invoked**
 

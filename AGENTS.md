@@ -18,6 +18,14 @@ Skills 按 bucket folder 组织在 `skills/` 下：
 
 本仓库也是一个单 plugin 的 Claude Code marketplace：`.claude-plugin/marketplace.json` 列出唯一的 `mattpocock-skills` plugin。修改 `.claude-plugin/plugin.json` 或 marketplace manifest 后，运行 `claude plugin validate . --strict`。Plugin 的公开 skill 集合继续遵循本仓库 bucket 规则。
 
+## 本地安装
+
+`scripts/link-skills.sh` 把仓库的公开 skills 链接到 `~/.claude/skills`，供 Claude CLI 使用。`scripts/link-skills-kimi.sh` 链接到 `~/.agents/skills`，供 Kimi Code 使用；Windows 上创建 junction（`cmd //c mklink /J`），不需要管理员权限。两者都是幂等的，可重复运行。
+
+因为链接指向仓库自身的 skill 目录，`git pull` 后安装侧即时生效，不必重跑脚本。但**新增或删除 skill 后必须重跑脚本**，且 Kimi Code 的技能列表在会话启动时扫描，新链接的 skill 要开新会话才会出现在选择器里。`~/.agents/skills` 下不属于本仓库的 skill（如 `browser-skill`、`hue`、`kimi-code-request-logs`）不受影响。
+
+清理链接时只删除链接本身，不要 `rm -rf` 其内容，否则会顺着 junction 递归删进仓库。
+
 ## 翻译刷新
 
 从 `mattpocock/skills` 刷新上游内容时，改文件前先使用 `.skills/translate-skill/SKILL.md`。本仓库采用 skill-guided content localization，不做 Git fork-sync：保留简体中文本地化身份，安装命令保持指向 `vinvcn/mattpocock-skills-zh-CN`，不要导入上游 repository-management state。翻译术语以 [翻译术语表](./TRANSLATION-GLOSSARY.md) 为准：刷新与本地化时优先采用已决定的译法；未决定的术语先按 [贡献指南](./CONTRIBUTING.md) 的流程提出请求，决定后再落地。

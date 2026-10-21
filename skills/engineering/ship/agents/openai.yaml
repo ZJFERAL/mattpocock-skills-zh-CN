@@ -1,0 +1,5 @@
+interface:
+  display_name: "Ship"
+  short_description: "把 idea 推到 ship 的严格流程，每阶段带硬 gate"
+policy:
+  allow_implicit_invocation: false
