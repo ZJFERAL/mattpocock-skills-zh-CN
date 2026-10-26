@@ -61,13 +61,15 @@ Repo 中任何记录代码应该如何写的内容，例如 `CODING_STANDARDS.md
 
 - 完整 diff command 和 commit list。
 - Step 3 中找到的 standards-source files 列表，**以及 Step 3 的 smell baseline 全文**；sub-agent 没有其他方式读取它。
-- Brief："Report, per file/hunk where relevant, (a) every place the diff violates a documented standard: cite the standard (file + the rule); and (b) any baseline smell you spot: name it and quote the hunk. Distinguish hard violations from judgement calls: documented-standard breaches can be hard, but baseline smells are always judgement calls, and a documented repo standard overrides the baseline. Skip anything tooling enforces. Under 400 words."
+- 上文的 sub-agent 行为约束。
+- Brief："Read the diff, then read the code the diff touches: callers, callees, and related tests for each changed function. When a signature, return value, or behavior changes, check every caller. Report, per file/hunk where relevant, (a) every place the diff violates a documented standard: cite the standard (file + the rule); and (b) any baseline smell you spot: name it and quote the hunk. Distinguish hard violations from judgement calls: documented-standard breaches can be hard, but baseline smells are always judgement calls, and a documented repo standard overrides the baseline. Skip anything tooling enforces. Every finding must cite file:line, quote the hunk, and suggest a minimal fix. End with a 'Declined to judge' list: each behavior you set aside as outside these standards, one line with the reason; an empty list means you set nothing aside. Under 400 words."
 
 **Spec sub-agent prompt** 包含：
 
 - Diff command 和 commit list。
 - Spec 的 path 或已获取内容。
-- Brief："Report: (a) requirements the spec asked for that are missing or partial; (b) behaviour in the diff that wasn't asked for (scope creep); (c) requirements that look implemented but where the implementation looks wrong. Quote the spec line for each finding. Under 400 words."
+- 上文的 sub-agent 行为约束。
+- Brief："Read the diff, then read the code the diff touches: callers, callees, and related tests for each changed function. The spec says what the software must do; it does not enumerate every input, environment, or condition. For behavior the spec is silent on, judge by what a reasonable person using this software would expect: a spec's silence is not permission, and grade such findings by their effect on that person. Report: (a) requirements the spec asked for that are missing or partial; (b) behaviour in the diff that wasn't asked for (scope creep); (c) requirements that look implemented but where the implementation looks wrong. Quote the spec line for each finding, cite file:line, and suggest a minimal fix. End with a 'Declined to judge' list: each behavior you set aside as outside the spec, one line with the reason; an empty list means you set nothing aside. Under 400 words."
 
 如果缺少 spec，跳过 Spec sub-agent，并在最终报告中说明。
 
@@ -76,6 +78,23 @@ Repo 中任何记录代码应该如何写的内容，例如 `CODING_STANDARDS.md
 在 `## Standards` 和 `## Spec` headings 下展示两个 reports，可原样或轻微清理。**不要**合并或重新排序 findings；这两个轴线刻意保持分离（见 _为什么是两条轴线_）。
 
 最后用一行总结：每个轴线的 findings 总数，以及每个轴线内最严重的问题（如果有）。不要跨轴线选一个总冠军；分离就是为了避免这种 reranking。
+
+## Sub-agent 行为约束（两个 sub-agent prompt 都要带上）
+
+- **只读审查**：不得改动 working tree、index、HEAD 或 branch 状态。只允许 `git diff`、`git log`、`git show`、读文件。要看其他 revision 就 `git worktree add` 到临时目录，绝不在当前 checkout 上移动 HEAD。
+- **不得再派 sub-agent**：全部审查自己完成。diff 太大就自己分批审，并在报告中说明分了几批。
+- **先核实再报告**：每条结论都要有具体场景（"这个输入或这种情况会导致这个错误结果"），并回读相关代码确认：调用方确实存在、值确实可能为空、代码确实没人用。改动引入的 import、方法、依赖要确认真实存在，不要默认它存在。
+- **不要静默省略**：篇幅不够时压缩每条的措辞，不可删条目或砍文件。没审到的文件在报告末尾列出并写明原因。
+
+## 失败路径
+
+- Spec 文件路径不存在或拿不到 issue 内容：向用户报告缺失项并问是否提供；用户确认没有 spec 时才按 "no spec available" 处理。
+- Diff 超出单个 sub-agent 的可读规模：按文件分批传给 sub-agent（每批一个 diff command），报告中注明批次；不要截断 diff。
+- Repo 中找不到任何 standards 文件：Standards sub-agent 仍然运行，只用 smell baseline，并在报告中说明没有 repo 记录的 standards。
+
+## 报告之后
+
+两个轴线的报告展示完后，问用户要先修哪些 findings（可以按编号引用），或建议从最严重的问题开始修。
 
 ## 为什么是两条轴线
 
