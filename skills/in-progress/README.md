@@ -9,6 +9,7 @@ npx skills@latest add ZJFERAL/mattpocock-skills-zh-CN --skill=<name>
 ```
 
 - **[loop-me](./loop-me/SKILL.md)** — 通过多个 sessions 把自己 grilling 成可实现的 workflow specs，使用当前目录作为 stateful workspace。User-invoked。
+- **[chief-of-staff](./chief-of-staff/SKILL.md)** — 在单个 session 中通过协调 subagents 和 recurring schedules 推进一个长期目标，同时兼顾战术执行与环境改进。User-invoked。
 - **[writing-beats](./writing-beats/SKILL.md)** — 以自选路径（choose-your-own-adventure）风格，把文章塑造成一段节拍旅程。选一个 starting beat，只写那个 beat，然后 pivot 到下一个，直到文章自然结束。
 - **[writing-fragments](./writing-fragments/SKILL.md)** — Grilling session，从你身上挖掘 fragments——异质的写作素材——并把它们追加到单一文档中，作为未来文章的 raw material。
 - **[writing-shape](./writing-shape/SKILL.md)** — 拿一份 raw material markdown 文件，一段一段地把它塑造成文章，并在每一步论证格式选择。
